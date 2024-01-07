@@ -1,0 +1,56 @@
+<html>
+	<head>
+   	 	<title> Leap Year Finder </title>
+  	 	<style>
+        		* { font-size: 40px; font-family: Century; }
+			 h1 {background-color: black; color: white; width:50%; border-radius:30px;}
+			.btn {background-color: red; color: white; width:20%; border-radius:30px;}
+			.btn:hover { color:cyan; }
+			body { background-color: azure;}
+    		</style>
+   		<script>
+        		function find() 
+			{
+            			event.preventDefault();
+            			let msg = document.getElementById("msg");
+            			let action = document.activeElement.value;
+            			let yearInput = document.getElementById("yearInput").value;
+            			let year = parseInt(yearInput); // Convert input string to integer
+
+            		if (action === "M1") 
+			{
+                		if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0)
+                   			msg.innerHTML = "yes1"; // Leap year
+                		else
+                    			msg.innerHTML = "no1";  // Not a leap year
+            		} 
+			else if (action === "M2") 
+			{
+                		switch (year % 4) 
+				{
+                    			case 0: msg.innerHTML = "yes2";		break;
+                    default:
+                        msg.innerHTML = "no2";
+                        break;
+                }
+            } else if (action === "M3") {
+                msg.innerHTML = (year % 4 === 0) ? "yes3" : "no3";
+            }
+        }
+    </script>
+</head>
+
+<body>
+<center>
+    <h1>Leap Year Finder</h1>
+    <form onsubmit="find(event)">
+        <input type="number" id="yearInput" placeholder="Enter year" required/> <!-- User input for the year -->
+        <br><br>
+        <input type="submit" value="M1" class="btn" />
+        <input type="submit" value="M2" class="btn" />
+        <input type="submit" value="M3" class="btn" />
+    </form>
+    <h2 id="msg"></h2>
+</center>
+</body>
+</html>
